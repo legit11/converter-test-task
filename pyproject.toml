@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "poetry-demo"
+version = "0.1.0"
+description = ""
+authors = ["Kirill <nikak.kirya@mail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.0"
+sqlalchemy = "2.0.30"
+asyncpg = "0.29.0"
+pydantic-settings = "2.2.1"
+alembic = "1.13.1"
+psycopg-binary = "3.1.19"
+psycopg = "3.1.19"
+passlib = "^1.7.4"
+greenlet = "^3.0.3"
+bcrypt = "^4.1.3"
+sqlalchemy-utils = "^0.41.2"
+loguru = "^0.7.2"
+httpx = "^0.27.2"
+uvicorn = "^0.31.0"
+
+[tool.poetry.dev-dependencies]
+black = "^24.10.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
