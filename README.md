@@ -22,7 +22,7 @@
 
 
 * В проекте настроено логирование с помощью библиотеки loguru(https://github.com/Delgan/loguru) *
-
+* Также в проекте используется линтер Black(https://black.readthedocs.io/en/stable/the_black_code_style/index.html#the-black-code-style) *
 
 
 *Пункт PS:*
