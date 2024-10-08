@@ -34,7 +34,7 @@
 
 **EXAMPLE:**
 
-DB_HOST=db
+DB_HOST=db(имя контейнера в Docker) / localhost
 
 
 DB_PORT=5432
