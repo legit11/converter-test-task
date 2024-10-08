@@ -31,6 +31,8 @@
 Содержимое файла .env:
 
 
+**EXAMPLE:**
+
 DB_HOST=db
 
 
