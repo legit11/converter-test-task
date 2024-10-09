@@ -24,6 +24,8 @@ async def lifespan(_: FastAPI):
 app = FastAPI(title="converter", root_path="/api", lifespan=lifespan)
 
 
+
+@logger.catch
 @app.get("/v1/convert")
 async def convert_currency(amount: float, from_currency: str, to_currency: str):
     url = f"{settings.EXTERNAL_API_URL}?from={from_currency}&to={to_currency}&amount={amount}&api_key={settings.API_KEY}"
@@ -34,6 +36,7 @@ async def convert_currency(amount: float, from_currency: str, to_currency: str):
 
         if response.status_code != 200:
             print(f"Error response: {response.text}")
+            logger.error("Error fetching currency data")
             raise HTTPException(
                 status_code=response.status_code, detail="Error fetching currency data"
             )
@@ -42,10 +45,12 @@ async def convert_currency(amount: float, from_currency: str, to_currency: str):
 
         if "result" not in data:
             print(f"Error details: {data}")
+            logger.error("Invalid response structure")
             raise HTTPException(status_code=400, detail="Invalid response structure")
 
         converted_amount = data["result"].get(to_currency)
         if converted_amount is None:
+            logger.error("Currency not found")
             raise HTTPException(status_code=400, detail="Currency not found")
 
         rate = data["result"].get("rate")
